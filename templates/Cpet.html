@@ -1,0 +1,44 @@
+
+
+<!-- Loads the path to the static files-->
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style = "text-align: center;">CPET Calculator</h2>
+
+      {% for message in form.firstname.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      {% for message in form.lastname.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      <form action = "http://localhost:5000/Cpet" method = post>
+         <fieldset>
+            <legend>Calculator Fields</legend>
+            {{ form.hidden_tag() }}
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ form.firstname.label }}<br>
+               {{ form.firstname }}
+               <br>
+               {{ form.lastname.label }}<br>
+               {{ form.lastname }}
+               <br>
+               {{ form.submit }}
+            </div>
+         </fieldset>
+      </form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
