@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    padding: 15px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.container {
+        max-width: 500px;
+        padding-top: 100px;
+      }

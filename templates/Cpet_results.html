@@ -1,0 +1,63 @@
+
+
+<!-- Loads the path to the static files-->
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+<h2 style = "text-align: center;">Parameter Input</h2>
+    <table border = 1, cellpadding="10">
+            <tr>
+                <th> First Name </th>
+                <th> Last Name </th>
+                <th> Age (years) </th>
+                <th> BMI </th>
+                <th> Chronotropic Response </th>
+                <th> End-Tidal CO2 </th>
+            </tr>
+
+            <tr>
+               <td> {{ firstname }} </td>
+               <td> {{ lastname }} </td>
+                <td> {{ age }} </td>
+                <td> {{ bmi }} </td>
+                <td> {{ chronotropic }} </td>
+                <td> {{ etco2 }} </td>
+            </tr>
+      </table>
+    </section>
+    <section>
+ <h2 style = "text-align: center;">Results: Classification and Estimation</h2>
+        <table border=1; cellpadding="10">
+            <tr>
+                <th> Model Type </th>
+                <th> VO2max Category </th>
+                <th> AT Category </th>
+                <th> VO2max Estimate </th>
+                <th> AT Estimate </th>
+            </tr>
+            <tr>
+               <td> Logistic </td>
+               <td> {{ vo2maxcat1 }} </td>
+                <td> {{ atcat1 }} </td>
+                <td> {{ vo2maxest1 }} </td>
+                <td> {{ atest1 }} </td>
+            </tr>
+            <tr>
+               <td> Support Vector Machines </td>
+               <td> {{ vo2maxcat2 }} </td>
+                <td> {{ atcat2 }} </td>
+                <td> {{ vo2maxest2 }} </td>
+                <td> {{ atest2 }} </td>
+            </tr>
+            <tr>
+               <td> Random Forest </td>
+               <td> {{ vo2maxcat3 }} </td>
+                <td> {{ atcat3 }} </td>
+                <td> {{ vo2maxest3 }} </td>
+                <td> {{ atest3 }} </td>
+            </tr>
+        </table>
+
+</section>
+{% endblock %}
