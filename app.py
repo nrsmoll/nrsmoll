@@ -30,38 +30,32 @@ def cpetcalc():
             etco2 = int(request.form['etco2'])
             chronotropic = int(request.form['chronotropic'])
 
-            logreg_path = 'home/nrsmoll/Scores/static/models/logistic_classifier_20181201.pkl'
-            global logreg
+            logreg_path = 'static/models/logistic_classifier_20181201.pkl'
             with open(logreg_path, 'rb') as f:
                 logreg = pickle.load(f)
-            svc_path = 'home/nrsmoll/Scores/static/models/svc_classifier_20181201.pkl'
-            global svc
+            svc_path = 'static/models/svc_classifier_20181201.pkl'
             with open(svc_path, 'rb') as f:
                 svc = pickle.load(f)
-            rf_path = 'home/nrsmoll/Scores/static/models/rf_classifier_20181201.pkl'
-            global rf
+            rf_path = 'static/models/rf_classifier_20181201.pkl'
             with open(rf_path, 'rb') as f:
                 rf = pickle.load(f)
-            linear_path = 'home/nrsmoll/Scores/static/models/linear_regression_20181201.pkl'
-            global linear
+            linear_path = 'static/models/linear_regression_20181201.pkl'
             with open(linear_path, 'rb') as f:
                 linear = pickle.load(f)
-            svr_path = 'home/nrsmoll/Scores/static/models/svr_regression_20181201.pkl'
-            global svr
+            svr_path = 'static/models/svr_regression_20181201.pkl'
             with open(svr_path, 'rb') as f:
                 svr = pickle.load(f)
-            rfr_path = 'home/nrsmoll/Scores/static/models/rfr_regression_20181201.pkl'
-            global rfr
+            rfr_path = 'static/models/rfr_regression_20181201.pkl'
             with open(rfr_path, 'rb') as f:
                 rfr = pickle.load(f)
 
             mlist = np.array([[age, bmi, etco2, chronotropic]])
             logpred = list(logreg.predict(mlist))
-            linpred = list(linear.predict(mlist))
             svcpred = list(svc.predict(mlist))
-            svrpred = list(svr.predict(mlist))
             rfpred = list(rf.predict(mlist))
-            rfrpred = list(rfr.predict(mlist))
+            svrpred = int(list(svr.predict(mlist))[0])
+            linpred = int(list(linear.predict(mlist))[0])
+            rfrpred = int(list(rfr.predict(mlist))[0])
             # Anaerobic modelling
             logpredat = 1
             linpredat = 22
