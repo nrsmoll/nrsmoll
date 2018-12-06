@@ -30,27 +30,27 @@ def cpetcalc():
             etco2 = int(request.form['etco2'])
             chronotropic = int(request.form['chronotropic'])
 
-            logreg_path = 'static/models/logistic_classifier_20181201.pkl'
+            logreg_path = 'home/nrsmoll/Scores/static/models/logistic_classifier_20181201.pkl'
             global logreg
             with open(logreg_path, 'rb') as f:
                 logreg = pickle.load(f)
-            svc_path = 'static/models/svc_classifier_20181201.pkl'
+            svc_path = 'home/nrsmoll/Scores/static/models/svc_classifier_20181201.pkl'
             global svc
             with open(svc_path, 'rb') as f:
                 svc = pickle.load(f)
-            rf_path = 'static/models/rf_classifier_20181201.pkl'
+            rf_path = 'home/nrsmoll/Scores/static/models/rf_classifier_20181201.pkl'
             global rf
             with open(rf_path, 'rb') as f:
                 rf = pickle.load(f)
-            linear_path = 'static/models/linear_regression_20181201.pkl'
+            linear_path = 'home/nrsmoll/Scores/static/models/linear_regression_20181201.pkl'
             global linear
             with open(linear_path, 'rb') as f:
                 linear = pickle.load(f)
-            svr_path = 'static/models/svr_regression_20181201.pkl'
+            svr_path = 'home/nrsmoll/Scores/static/models/svr_regression_20181201.pkl'
             global svr
             with open(svr_path, 'rb') as f:
                 svr = pickle.load(f)
-            rfr_path = 'static/models/rfr_regression_20181201.pkl'
+            rfr_path = 'home/nrsmoll/Scores/static/models/rfr_regression_20181201.pkl'
             global rfr
             with open(rfr_path, 'rb') as f:
                 rfr = pickle.load(f)
