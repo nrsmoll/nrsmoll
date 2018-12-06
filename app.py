@@ -30,6 +30,7 @@ def cpetcalc():
             etco2 = int(request.form['etco2'])
             chronotropic = int(request.form['chronotropic'])
 
+            #for pythonanywhere, the route has to be changed to '/home/nrsmoll/Scores/static/models/'
             logreg_path = 'static/models/logistic_classifier_20181201.pkl'
             with open(logreg_path, 'rb') as f:
                 logreg = pickle.load(f)
@@ -50,9 +51,9 @@ def cpetcalc():
                 rfr = pickle.load(f)
 
             mlist = np.array([[age, bmi, etco2, chronotropic]])
-            logpred = list(logreg.predict(mlist))
-            svcpred = list(svc.predict(mlist))
-            rfpred = list(rf.predict(mlist))
+            logpred = int(list(logreg.predict(mlist))[0])
+            svcpred = int(list(svc.predict(mlist))[0])
+            rfpred = int(list(rf.predict(mlist))[0])
             svrpred = int(list(svr.predict(mlist))[0])
             linpred = int(list(linear.predict(mlist))[0])
             rfrpred = int(list(rfr.predict(mlist))[0])
