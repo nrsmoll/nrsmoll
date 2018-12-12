@@ -14,6 +14,9 @@ app.secret_key = 'development key'
 def home():
     return render_template('index.html', title='Home')
 
+@app.route('/Publications')
+def publications():
+    return render_template('publications.html', title='Publications')
 
 @app.route('/Cpet', methods=('GET', 'POST'))
 def cpetcalc():
@@ -30,7 +33,7 @@ def cpetcalc():
             etco2 = int(request.form['etco2'])
             chronotropic = int(request.form['chronotropic'])
 
-            #for pythonanywhere, the route has to be changed to '/home/nrsmoll/Scores/static/models/'
+            #for pythonanywhere, the route has to be changed to '/home/nrsmoll/static/models/'
             logreg_path = 'static/models/logistic_classifier_20181201.pkl'
             with open(logreg_path, 'rb') as f:
                 logreg = pickle.load(f)

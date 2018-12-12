@@ -29,11 +29,21 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="/Cpet">CPET</a></li>
+        <ul class="nav navbar-nav">
+              <li><a href="/Publications">Publication List</a></li>
+          </ul>
+        <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Machine Learning<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/Cpet">CPET Classifier</a></li>
+            <li><a href="#">Classifier 2</a></li>
+            <li><a href="#">Classifier 3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
       </ul>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
         <li class="dropdown">
@@ -51,11 +61,9 @@
   </div><!-- /.container-fluid -->
 </nav>
     <div class="container">
-      <h3>Pre-CPET Screening Calculator</h3>
       <br>
       {% block content %}{% endblock %}
       <br>
-      <h3>Pre-CPET Screening Calculator</h3>
     </div>
 
 
