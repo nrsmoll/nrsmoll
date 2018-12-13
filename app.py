@@ -42,7 +42,7 @@ def login():
     if request.method == 'POST':
         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
             error = 'Invalid Credentials. Please try again.'
-            return redirect(url_for('login'))
+            return render_template('login.html', error=error)
         else:
             session['logged_in'] = True
             return redirect(url_for('logbook_data'))
