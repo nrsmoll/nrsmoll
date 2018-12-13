@@ -31,7 +31,8 @@ def logbook():
 @app.route('/Logbook_data')
 def logbook_data():
     if not session.get('logged_in'):
-        return render_template('login.html')
+        error = 'Dude, you need to login to see this stuff!!'
+        return render_template('login.html', error=error)
     else:
         return render_template('logbook_data.html', title='Logbook Data')
 
