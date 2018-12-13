@@ -1,9 +1,12 @@
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, redirect, url_for, session, abort
 from forms import CpetForm
 from flask import request
-from functions import create_cat
 import pickle
 import numpy as np
+from functions import create_cat
+
+
+
 
 app = Flask(__name__)
 app.secret_key = 'development key'
@@ -17,6 +20,38 @@ def home():
 @app.route('/Publications')
 def publications():
     return render_template('publications.html', title='Publications')
+
+@app.route('/Logbook')
+def logbook():
+    return render_template('logbookhome.html', title='Logbook Home')
+
+
+
+
+@app.route('/Logbook_data')
+def logbook_data():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return render_template('logbook_data.html', title='Logbook Data')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error=None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+            return redirect(url_for('login'))
+        else:
+            session['logged_in'] = True
+            return redirect(url_for('logbook_data'))
+    return render_template('login.html', error=error)
+
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return home()
 
 @app.route('/Cpet', methods=('GET', 'POST'))
 def cpetcalc():
@@ -33,7 +68,7 @@ def cpetcalc():
             etco2 = int(request.form['etco2'])
             chronotropic = int(request.form['chronotropic'])
 
-            #for pythonanywhere, the route has to be changed to '/home/nrsmoll/static/models/'
+            # for pythonanywhere, the route has to be changed to '/home/nrsmoll/nrsmoll/static/models/'
             logreg_path = 'static/models/logistic_classifier_20181201.pkl'
             with open(logreg_path, 'rb') as f:
                 logreg = pickle.load(f)

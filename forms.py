@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField
+from wtforms import StringField, SubmitField, IntegerField, PasswordField
 from wtforms.validators import DataRequired, NumberRange, InputRequired
 
 class CpetForm(FlaskForm):
@@ -12,3 +12,4 @@ class CpetForm(FlaskForm):
     chronotropic = IntegerField('Chronotropic Response (HR)', validators=[DataRequired()])
     etco2 = IntegerField('End-Tidal CO2', validators=[DataRequired()])
     submit = SubmitField('Classify')
+

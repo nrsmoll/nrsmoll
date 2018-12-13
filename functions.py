@@ -5,3 +5,4 @@ def create_cat(i):
         return 'High Risk'
     else:
         return 'Low Risk'
+
