@@ -7,7 +7,6 @@ from functions import create_cat
 
 
 
-
 app = Flask(__name__)
 app.secret_key = 'development key'
 
@@ -21,20 +20,9 @@ def home():
 def publications():
     return render_template('publications.html', title='Publications')
 
-@app.route('/Logbook')
+@app.route('/logbook')
 def logbook():
     return render_template('logbookhome.html', title='Logbook Home')
-
-
-
-
-@app.route('/Logbook_data')
-def logbook_data():
-    if not session.get('logged_in'):
-        error = 'Dude, you need to login to see this stuff!!'
-        return render_template('login.html', error=error)
-    else:
-        return render_template('logbook_data.html', title='Logbook Data')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -53,6 +41,15 @@ def login():
 def logout():
     session['logged_in'] = False
     return home()
+
+@app.route('/logbook_data')
+def logbook_data():
+    if not session.get('logged_in'):
+        error = 'Dude, you need to login to see this stuff!!'
+        return render_template('login.html', error=error)
+    else:
+        return render_template('logbook_data.html')
+
 
 @app.route('/Cpet', methods=('GET', 'POST'))
 def cpetcalc():
